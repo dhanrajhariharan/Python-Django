@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Report</title>
+</head>
+<body>
+    <h2>Task Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.department.name }}</td>
+                    <td>{% if task.completed %}Completed{% else %}On Progress{% endif %}</td>
+                    <td>{% if task.assigned_to %}{{ task.assigned_to.name }} ({{ task.assigned_to.department.name }}){% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
